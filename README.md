@@ -92,8 +92,10 @@ These stats are generated from the examples directory, and can be reproduced by 
 ```
 file                  raw     gzip   zopfli
 original.js           178612  37579  35483
-vanilla-uglify.js     67822   20153  19443
-vanilla-closure.js    59563   18752  18110
+vanilla-babili.js     76342   22318  21552
+vanilla-uglify.js     67822   20161  19443
+vanilla-closure.js    59563   18760  18110
+optimized-babili.js   67758   18980  18189
 optimized-closure.js  51677   16068  15502
 optimized-uglify.js   25260   8964   8703
 ```
@@ -104,8 +106,10 @@ optimized-uglify.js   25260   8964   8703
 ```
 file                  raw     gzip   zopfli
 original.js           228750  43995  41480
-vanilla-uglify.js     80394   23155  22276
-vanilla-closure.js    71191   21973  21186
+vanilla-babili.js     89261   25298  24341
+vanilla-uglify.js     80394   23163  22276
+vanilla-closure.js    71191   21981  21186
+optimized-babili.js   80217   21916  21020
 optimized-closure.js  63689   19564  18872
 optimized-uglify.js   42457   13708  13208
 ```

@@ -1,3 +1,14 @@
 {
-	"plugins": ["../elm-pre-minify.js"]
+	"env": {
+		"prepared": {
+			"presets": ["babili"]
+		},
+		"optimized-babili": {
+			"presets": ["babili"],
+			"plugins": ["../elm-pre-minify.js"]
+		},
+		"vanilla-babili": {
+			"presets": ["babili"]
+		}
+	}
 }
