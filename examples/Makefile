@@ -18,7 +18,7 @@ build/elm-todomvc/original.js:
 	cd elm-todomvc; elm-make Todo.elm --yes --output ../$(BASE)/original.js
 
 $(BASE)/prepared.js: $(BASE)/original.js
-	babel $(BASE)/original.js -o $(BASE)/prepared.js
+	BABEL_ENV=prepared babel $(BASE)/original.js -o $(BASE)/prepared.js
 
 $(BASE)/uglify-beautified.js: $(BASE)/original.js
 	uglifyjs $(BASE)/original.js -cb -o $(BASE)/uglify-beautified.js
@@ -38,7 +38,27 @@ $(BASE)/vanilla-closure.js: $(BASE)/original.js
 $(BASE)/optimized-closure.js: $(BASE)/prepared.js
 	closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS $(BASE)/prepared.js > $(BASE)/optimized-closure.js
 
-stats: $(BASE)/vanilla-uglify.js $(BASE)/optimized-uglify.js $(BASE)/vanilla-closure.js $(BASE)/optimized-closure.js
-	./measure.sh $(BASE)/original.js $(BASE)/vanilla-uglify.js $(BASE)/vanilla-closure.js $(BASE)/optimized-closure.js $(BASE)/optimized-uglify.js | tee $(BASE)/stats.txt
+$(BASE)/vanilla-babili.js: $(BASE)/original.js
+	BABEL_ENV=vanilla-babili babel $(BASE)/original.js -o $(BASE)/vanilla-babili.js
+
+$(BASE)/optimized-babili.js: $(BASE)/original.js
+	BABEL_ENV=optimized-babili babel $(BASE)/original.js -o $(BASE)/optimized-babili.js
+
+stats: \
+		$(BASE)/vanilla-babili.js \
+		$(BASE)/vanilla-uglify.js \
+		$(BASE)/vanilla-closure.js \
+		$(BASE)/optimized-babili.js \
+		$(BASE)/optimized-closure.js \
+		$(BASE)/optimized-uglify.js
+
+	./measure.sh $(BASE)/original.js \
+		$(BASE)/vanilla-babili.js \
+		$(BASE)/vanilla-uglify.js \
+		$(BASE)/vanilla-closure.js \
+		$(BASE)/optimized-babili.js \
+		$(BASE)/optimized-closure.js \
+		$(BASE)/optimized-uglify.js \
+		| tee $(BASE)/stats.txt
 
 all: $(BASE)/uglify-beautified.js $(BASE)/optimized-beautified.js $(BASE)/vanilla-uglify.js $(BASE)/optimized-uglify.js
