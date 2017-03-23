@@ -1,3 +1,5 @@
+# To get stats, run with the name of the example you want to see: `make stats NAME=hello-world`
+
 export PATH := node_modules/.bin:$(PATH)
 
 NAME ?= hello-world
