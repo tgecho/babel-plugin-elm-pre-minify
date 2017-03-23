@@ -83,6 +83,29 @@ var potentiallyUnusedVar = /* #__PURE__ */F2(someFunc);
 
 ## Effectiveness
 
-Testing has been limited, but highly encouraging so far. Running [elm-todomvc](https://github.com/evancz/elm-todomvc/) through Uglify with the standard `--compress --mangle` options yields a minified result of 80.405KB (23.162KB gzipped). Using this plugin produces a result of 42.384KB (13.662KB gzipped).
+Testing has been limited, but highly encouraging so far. Real world data is lacking, but so far I haven't noticed any malfunctions caused by the transformed code. Your results may vary, so please report an issue if you see otherwise!
 
-Real world data is lacking, but so far I haven't noticed any malfunctions caused by the transformed code. Your results may vary, so please report an issue if you see otherwise!
+These stats are generated from the examples directory, and can be reproduced by following the instructions in the Makefile. The optimized
+
+### hello-world
+
+```
+file                  raw     gzip   zopfli
+original.js           178612  37579  35483
+vanilla-uglify.js     67822   20153  19443
+vanilla-closure.js    59563   18752  18110
+optimized-closure.js  51677   16068  15502
+optimized-uglify.js   25260   8964   8703
+```
+
+
+### elm-todomvc
+
+```
+file                  raw     gzip   zopfli
+original.js           228750  43995  41480
+vanilla-uglify.js     80394   23155  22276
+vanilla-closure.js    71191   21973  21186
+optimized-closure.js  63689   19564  18872
+optimized-uglify.js   42457   13708  13208
+```

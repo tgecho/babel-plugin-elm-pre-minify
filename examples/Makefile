@@ -1,3 +1,4 @@
+# In addition to running `yarn install` first, you'll need zopfli and closure-compiler on your system to complete
 # To get stats, run with the name of the example you want to see: `make stats NAME=hello-world`
 
 export PATH := node_modules/.bin:$(PATH)
@@ -19,19 +20,25 @@ build/elm-todomvc/original.js:
 $(BASE)/prepared.js: $(BASE)/original.js
 	babel $(BASE)/original.js -o $(BASE)/prepared.js
 
-$(BASE)/uglified-beautified.js: $(BASE)/original.js
-	uglifyjs $(BASE)/original.js -cb -o $(BASE)/uglified-beautified.js
+$(BASE)/uglify-beautified.js: $(BASE)/original.js
+	uglifyjs $(BASE)/original.js -cb -o $(BASE)/uglify-beautified.js
 
 $(BASE)/optimized-beautified.js: $(BASE)/prepared.js
 	uglifyjs $(BASE)/prepared.js -cb -o $(BASE)/optimized-beautified.js
 
-$(BASE)/uglified.js: $(BASE)/original.js
-	uglifyjs $(BASE)/original.js -cm -o $(BASE)/uglified.js
+$(BASE)/vanilla-uglify.js: $(BASE)/original.js
+	uglifyjs $(BASE)/original.js -cm -o $(BASE)/vanilla-uglify.js
 
-$(BASE)/optimized.js: $(BASE)/prepared.js
-	uglifyjs $(BASE)/prepared.js -cm -o $(BASE)/optimized.js
+$(BASE)/optimized-uglify.js: $(BASE)/prepared.js
+	uglifyjs $(BASE)/prepared.js -cm -o $(BASE)/optimized-uglify.js
 
-stats: $(BASE)/uglified.js $(BASE)/optimized.js
-	./measure.sh $(BASE)/original.js $(BASE)/uglified.js $(BASE)/optimized.js | tee $(BASE)/stats.txt
+$(BASE)/vanilla-closure.js: $(BASE)/original.js
+	closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS $(BASE)/original.js > $(BASE)/vanilla-closure.js
 
-all: $(BASE)/uglified-beautified.js $(BASE)/optimized-beautified.js $(BASE)/uglified.js $(BASE)/optimized.js
+$(BASE)/optimized-closure.js: $(BASE)/prepared.js
+	closure-compiler --compilation_level ADVANCED_OPTIMIZATIONS $(BASE)/prepared.js > $(BASE)/optimized-closure.js
+
+stats: $(BASE)/vanilla-uglify.js $(BASE)/optimized-uglify.js $(BASE)/vanilla-closure.js $(BASE)/optimized-closure.js
+	./measure.sh $(BASE)/original.js $(BASE)/vanilla-uglify.js $(BASE)/vanilla-closure.js $(BASE)/optimized-closure.js $(BASE)/optimized-uglify.js | tee $(BASE)/stats.txt
+
+all: $(BASE)/uglify-beautified.js $(BASE)/optimized-beautified.js $(BASE)/vanilla-uglify.js $(BASE)/optimized-uglify.js
