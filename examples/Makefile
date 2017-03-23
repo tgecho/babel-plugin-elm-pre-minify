@@ -10,6 +10,10 @@ build/hello-world/original.js:
 	mkdir -p ./build/hello-world
 	cd hello-world; elm-make HelloWorld.elm --yes --output ../$(BASE)/original.js
 
+build/elm-todomvc/original.js:
+	mkdir -p ./build/elm-todomvc
+	cd elm-todomvc; elm-make Todo.elm --yes --output ../$(BASE)/original.js
+
 $(BASE)/prepared.js: $(BASE)/original.js
 	babel $(BASE)/original.js -o $(BASE)/prepared.js
 

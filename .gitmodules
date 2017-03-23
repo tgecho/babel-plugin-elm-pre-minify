@@ -1,0 +1,3 @@
+[submodule "examples/elm-todomvc"]
+	path = examples/elm-todomvc
+	url = https://github.com/evancz/elm-todomvc.git
