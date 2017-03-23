@@ -1,0 +1,12 @@
+{
+  "name": "examples",
+  "version": "1.0.0",
+  "description": "Simple Elm projects to use as minification subjects",
+  "author": "Erik Simmler <tgecho@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-cli": "^6.24.0",
+    "elm": "^0.18.0",
+    "uglify": "^0.1.5"
+  }
+}

@@ -1,0 +1,3 @@
+{
+	"plugins": ["../elm-pre-minify.js"]
+}
