@@ -9,6 +9,9 @@ export BASE := build/$(NAME)
 clean:
 	rm -rf build
 
+prepared: $(BASE)/prepared.js
+beautified: $(BASE)/uglify-beautified.js $(BASE)/optimized-beautified.js
+
 build/hello-world/original.js:
 	mkdir -p ./build/hello-world
 	cd hello-world; elm-make HelloWorld.elm --yes --output ../$(BASE)/original.js

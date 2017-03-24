@@ -61,6 +61,19 @@ function isEligibleIife(path) {
     return true;
 }
 
+function debugMetadataUndefined(topLevelStatements) {
+    for (let i = topLevelStatements.length - 1; i >= 0; i--) {
+        const s = topLevelStatements[i];
+        const expression = s.consequent && s.consequent.body && s.consequent.body[0] && s.consequent.body[0].expression;
+        if (expression && expression.type === 'CallExpression' && expression.arguments.length === 3) {
+            const [one, two, three] = expression.arguments;
+            if (one.object && one.object.name === 'Elm' && one.property.value === two.value) {
+                return three.type === 'Identifier' && three.name === 'undefined';
+            }
+        }
+    }
+}
+
 module.exports = function({types: t}) {
     return {
         visitor: {
@@ -71,10 +84,24 @@ module.exports = function({types: t}) {
                     path.node.leadingComments = [{type: 'BlockStatement', value: '#__PURE__'}];
                 }
             },
+            UnaryExpression(path, state) {
+                // Ensure that the debugSetup path is pruned if no debugMetadata was detected
+                if (
+                    path.node.operator === 'typeof' &&
+                    path.node.argument.name === 'debugMetadata' &&
+                    path.parent.right &&
+                    path.parent.right.value === 'undefined'
+                ) {
+                    if (this._debugMetadataUndefined !== undefined) { // skip if we never made a positive ID
+                        path.parentPath.replaceWith(t.identifier(this._debugMetadataUndefined ? 'true' : 'false'));
+                    }
+                }
+            },
             FunctionExpression: {
                 enter(path, state) {
                     if (!this._insideElmIife && isElmIife(path)) {
                         this._insideElmIife = true;
+                        this._debugMetadataUndefined = debugMetadataUndefined(path.node.body.body);
                         path._isElmIife = true;
                     }
                 },

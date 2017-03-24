@@ -94,10 +94,10 @@ file                  raw     gzip   zopfli
 original.js           178612  37579  35483
 vanilla-babili.js     76342   22318  21552
 vanilla-uglify.js     67822   20161  19443
+optimized-babili.js   67754   18982  18193
 vanilla-closure.js    59563   18760  18110
-optimized-babili.js   67758   18980  18189
-optimized-closure.js  51677   16068  15502
-optimized-uglify.js   25260   8964   8703
+optimized-closure.js  48952   15050  14505
+optimized-uglify.js   22790   8092   7860
 ```
 
 
@@ -109,7 +109,7 @@ original.js           228750  43995  41480
 vanilla-babili.js     89261   25298  24341
 vanilla-uglify.js     80394   23163  22276
 vanilla-closure.js    71191   21981  21186
-optimized-babili.js   80217   21916  21020
-optimized-closure.js  63689   19564  18872
-optimized-uglify.js   42457   13708  13208
+optimized-babili.js   80199   21912  21011
+optimized-closure.js  60971   18574  17919
+optimized-uglify.js   39988   12838  12378
 ```
