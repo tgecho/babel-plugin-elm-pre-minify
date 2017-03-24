@@ -7,19 +7,23 @@ import prettier from 'prettier';
 
 const examples = path.join(__dirname, '../test/fixtures');
 
-for (let dir of fs.readdirSync(examples)) {
-	if (fs.lstatSync(path.join(examples, dir)).isDirectory()) {
-		test(dir, t => {
-			const inputJs = fs.readFileSync(path.join(examples, dir, 'input.js'), 'utf8');
-			const expectedJs = fs.readFileSync(path.join(examples, dir, 'expected.js'), 'utf8');
+function testExample(name, babelOptions = {plugins: [elmPreMinify]}) {
+	test(`Example: ${name}`, t => {
+		const inputJs = fs.readFileSync(path.join(examples, name, 'input.js'), 'utf8');
+		const expectedJs = fs.readFileSync(path.join(examples, name, 'expected.js'), 'utf8');
 
-			const transformed = prettier.format(babel.transform(inputJs, {
-				plugins: [elmPreMinify],
-			}).code);
+		const transformed = prettier.format(babel.transform(inputJs, babelOptions).code);
+		const expected = prettier.format(expectedJs);
 
-			const expected = prettier.format(expectedJs);
-
-			t.true(transformed === expected);
-		});
-	}
+		t.true(transformed === expected);
+	});
 }
+
+testExample('happy-path');
+testExample('exclusions');
+testExample('pure-annotations-off', {plugins: [[elmPreMinify, {
+	pureAnnotations: false
+}]]});
+testExample('iife-unwrapping-off', {plugins: [[elmPreMinify, {
+	iifeUnwrapping: false
+}]]});

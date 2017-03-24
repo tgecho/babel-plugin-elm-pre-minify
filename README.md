@@ -21,9 +21,7 @@ You'll need Babel: [Babel Setup Docs](https://babeljs.io/docs/setup/)
 Add the plugin to your Babel config (e.g. .babelrc)
 
 ```json
-{
-	"plugins": ["elm-pre-minify"]
-}
+{"plugins": ["elm-pre-minify"]}
 ```
 
 ### Minifying
@@ -64,6 +62,13 @@ var shouldBeUnwrapped = {},
 var referenceToWrappedFunction = shouldBeUnwrapped$iife_public$exposedFunction;
 ```
 
+This transformation can be disabled with the following Babel configuration:
+
+```json
+{"plugins": [["elm-pre-minify", {iifeUnwrapping: false}]]}
+```
+
+
 ### Pure function annotation
 
 Minifiers tend to be very conservative about whether or not a function has potential side effects. If a variable is unused, but a function was called as part of its initialization, the dead code eliminator will tend to skip that variable. In Elm, helper functions such as `F2` and `A2` are used extensively for various reasons. They are in fact pure and side effect free (despite their internal use of mutation).
@@ -78,6 +83,12 @@ Becomes
 
 ```
 var potentiallyUnusedVar = /* #__PURE__ */F2(someFunc);
+```
+
+This transformation can be disabled with the following Babel configuration:
+
+```json
+{"plugins": [["elm-pre-minify", {pureAnnotations: false}]]}
 ```
 
 

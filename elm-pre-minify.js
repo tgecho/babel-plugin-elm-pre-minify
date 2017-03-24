@@ -65,6 +65,9 @@ module.exports = function({types: t}) {
     return {
         visitor: {
             CallExpression(path, state) {
+                const {pureAnnotations = true} = state.opts;
+                if (!pureAnnotations) return;
+
                 const name = path.node.callee.name;
 
                 if (PURE_FUNC_NAMES.has(name) && !path.node.leadingComments) {
@@ -88,9 +91,10 @@ module.exports = function({types: t}) {
                         return;
                     }
 
-                    if (!isEligibleIife(path)) {
-                        return;
-                    }
+                    const {iifeUnwrapping = true} = state.opts;
+                    if (!iifeUnwrapping) return;
+
+                    if (!isEligibleIife(path)) return;
 
                     const declaratorPath = path.parentPath.parentPath;
                     const declarationPath = declaratorPath.parentPath;
