@@ -1,2 +1,5 @@
 examples
 test
+coverage
+.nyc_output
+yarn.lock
