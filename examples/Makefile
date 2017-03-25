@@ -9,8 +9,9 @@ export BASE := build/$(NAME)
 clean:
 	rm -rf build
 
+original: $(BASE)/original.js
 prepared: $(BASE)/prepared.js
-beautified: $(BASE)/uglify-beautified.js $(BASE)/optimized-beautified.js
+beautified: $(BASE)/optimized-beautified.js
 
 build/hello-world/original.js:
 	mkdir -p ./build/hello-world
@@ -19,6 +20,10 @@ build/hello-world/original.js:
 build/elm-todomvc/original.js:
 	mkdir -p ./build/elm-todomvc
 	cd elm-todomvc; elm-make Todo.elm --yes --output ../$(BASE)/original.js
+
+build/kitchen-sink/original.js:
+	mkdir -p ./build/kitchen-sink
+	cd kitchen-sink; elm-make KitchenSink.elm --yes --output ../$(BASE)/original.js
 
 $(BASE)/prepared.js: $(BASE)/original.js
 	BABEL_ENV=prepared babel $(BASE)/original.js -o $(BASE)/prepared.js

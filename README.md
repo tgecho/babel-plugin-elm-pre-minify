@@ -113,3 +113,19 @@ optimized-babili.js   80199   21912  21011
 optimized-closure.js  60971   18574  17919
 optimized-uglify.js   38561   12338  11876
 ```
+
+
+### kitchen-sink
+
+Imports all "official" modules and demonstrates that dead code elimination is able to clear most of them away. The main barrier to getting down to the hello world size above is the fact that effect managers (Task, Time and Random) register themselves on shared object, preventing dead code elimination from working on them and their dependencies. In reality you're probably not importing them without using the effect managers, so the ~4.5KB is probably nothing to cry about.
+
+```
+file                  raw     gzip   zopfli
+original.js           219217  45751  43100
+vanilla-babili.js     89686   26486  25558
+vanilla-uglify.js     79945   23915  23041
+optimized-babili.js   80000   22966  22037
+vanilla-closure.js    70078   22127  21328
+optimized-closure.js  58525   18026  17379
+optimized-uglify.js   39639   12314  11886
+```
