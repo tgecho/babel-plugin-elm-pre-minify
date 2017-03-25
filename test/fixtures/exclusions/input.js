@@ -17,6 +17,16 @@
     return {result: result}
   }();
 
+  var skipWithInvalidChildren3 = function() {
+    return "I'm not Native!";
+  }();
+
+  skipIifesThatArentVarDecs = function() {
+    return {foo: 1};
+  }();
+
+  var skipEmptyIifes = function() {}();
+
   var Elm = {};
 
 }).call(this);

@@ -7,10 +7,11 @@
   "author": "Erik Simmler <tgecho@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "ava"
+    "test": "nyc --reporter=html --reporter=text --reporter=text-summary --check-coverage --lines 100 --functions 100 --branches 100 ava"
   },
   "devDependencies": {
     "ava": "^0.18.2",
+    "nyc": "^10.1.2",
     "prettier": "^0.22.0"
   }
 }

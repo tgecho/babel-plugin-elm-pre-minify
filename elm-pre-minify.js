@@ -166,13 +166,12 @@ module.exports = function({types: t}) {
                                 break;
 
                             case 'ReturnStatement':
-                                if (innerPath.get('argument').isObjectExpression()) {
-                                    statement.argument.properties.forEach(prop => {
-                                        const id = t.identifier(`${prefix}$iife_public$${prop.key.name}`);
-                                        declarators.push(t.variableDeclarator(id, prop.value));
-                                        keys[prop.key.name] = id;
-                                    });
-                                }
+                                // We've already confirmed that this is an ObjectExpression in isEligibleIife
+                                statement.argument.properties.forEach(prop => {
+                                    const id = t.identifier(`${prefix}$iife_public$${prop.key.name}`);
+                                    declarators.push(t.variableDeclarator(id, prop.value));
+                                    keys[prop.key.name] = id;
+                                });
                                 break;
                         }
                     });
