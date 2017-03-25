@@ -117,7 +117,7 @@ optimized-uglify.js   38561   12338  11876
 
 ### kitchen-sink
 
-Imports all "official" modules and demonstrates that dead code elimination is able to clear most of them away. The main barrier to getting down to the hello world size above is the fact that effect managers (Task, Time and Random) register themselves on shared object, preventing dead code elimination from working on them and their dependencies. In reality you're probably not importing them without using the effect managers, so the ~4.5KB is probably nothing to cry about.
+Imports all "official" modules and demonstrates that dead code elimination is able to clear most of them away. The main barrier in getting down to the hello-world size is the fact that effect managers (Task, Time and Random) register themselves on a shared object, preventing dead code elimination from working on them and their dependencies. In reality you're probably not importing them without using the effect managers, so the ~4.5KB is really nothing to cry about.
 
 ```
 file                  raw     gzip   zopfli
