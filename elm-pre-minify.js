@@ -1,17 +1,22 @@
 
 
 const PURE_FUNC_NAMES = new Set([
-    "F2","F3","F4","F5","F6","F7","F8","F9",
-    "A2","A3","A4","A5","A6","A7","A8","A9",
-    "_elm_lang$core$Dict$RBEmpty_elm_builtin",
-    "_elm_lang$core$Native_Json$decodePrimitive",
-    "_elm_lang$core$Native_Utils$chr",
-    "_elm_lang$core$Native_Utils$update",
-    "_elm_lang$core$Platform_Cmd$batch",
-    "_elm_lang$dom$Native_Dom$iife_public$on",
-    "_elm_lang$html$Html$node",
-    "_elm_lang$html$Html_Keyed$node",
-    "_elm_lang$virtual_dom$Native_VirtualDom$iife_public$makeProgram",
+    'F2','F3','F4','F5','F6','F7','F8','F9',
+    'A2','A3','A4','A5','A6','A7','A8','A9',
+    '_elm_lang$core$Dict$RBEmpty_elm_builtin',
+    '_elm_lang$core$Native_Json$decodePrimitive',
+    '_elm_lang$core$Native_Json$iife_public$decodePrimitive',
+    '_elm_lang$core$Native_Utils$chr',
+    '_elm_lang$core$Native_Utils$iife_public$chr',
+    '_elm_lang$core$Native_Utils$iife_public$update',
+    '_elm_lang$core$Native_Utils$update',
+    '_elm_lang$core$Platform_Cmd$batch',
+    '_elm_lang$dom$Native_Dom$iife_private$on',
+    '_elm_lang$dom$Native_Dom$iife_public$on',
+    '_elm_lang$html$Html$node',
+    '_elm_lang$html$Html_Keyed$node',
+    '_elm_lang$virtual_dom$Native_VirtualDom$iife_private$makeProgram',
+    '_elm_lang$virtual_dom$Native_VirtualDom$iife_public$makeProgram',
 ]);
 
 function isElmIife(path) {
