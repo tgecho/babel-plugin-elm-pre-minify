@@ -178,12 +178,18 @@ module.exports = function({types: t}) {
                         }
                     });
 
-                    rootPath.scope.bindings[prefix].referencePaths.forEach(ref => {
-                        const sub = ref.isIdentifier() && keys[ref.parent.property.name];
-                        if (sub) {
-                            ref.parentPath.replaceWith(sub)
-                        }
-                    });
+                    function replaceBindings(scope, base) {
+                        scope.bindings[base].referencePaths.forEach(ref => {
+                            const sub = ref.parentPath.isMemberExpression() && keys[ref.parent.property.name];
+                            if (sub) {
+                                ref.parentPath.replaceWith(sub)
+                            } else if (ref.parentPath.isVariableDeclarator()) {
+                                console.log(base, '->', ref.parentPath.node.id.name)
+                                replaceBindings(ref.parentPath.scope, ref.parentPath.node.id.name);
+                            }
+                        });
+                    }
+                    replaceBindings(rootPath.scope, prefix);
 
                     declaratorPath.replaceWithMultiple(declarators);
                 }
