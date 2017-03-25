@@ -1,3 +1,6 @@
 [submodule "examples/elm-todomvc"]
 	path = examples/elm-todomvc
 	url = https://github.com/evancz/elm-todomvc.git
+[submodule "examples/elm-street-404"]
+	path = examples/elm-street-404
+	url = https://github.com/zalando/elm-street-404.git

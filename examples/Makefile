@@ -25,6 +25,10 @@ build/kitchen-sink/original.js:
 	mkdir -p ./build/kitchen-sink
 	cd kitchen-sink; elm-make KitchenSink.elm --yes --output ../$(BASE)/original.js
 
+build/elm-street-404/original.js:
+	mkdir -p ./build/elm-street-404
+	cd elm-street-404; elm-make src/Main.elm --yes --output ../$(BASE)/original.js
+
 $(BASE)/prepared.js: $(BASE)/original.js
 	BABEL_ENV=prepared babel $(BASE)/original.js -o $(BASE)/prepared.js
 
