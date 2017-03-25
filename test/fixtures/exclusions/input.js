@@ -31,6 +31,11 @@
 
 }).call(this);
 
+(function() {
+  var foo = A2('bar');
+  var Elm = 'this is some weird imposter Elm IIFE';
+}).call(this);
+
 var skipOutsideElmIife = function() {
   return {exposed: 1};
 }();

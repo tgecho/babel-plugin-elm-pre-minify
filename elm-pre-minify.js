@@ -86,6 +86,8 @@ module.exports = function({types: t}) {
     return {
         visitor: {
             CallExpression(path, state) {
+                if (!this._insideElmIife) return;
+
                 const name = path.node.callee.name;
 
                 if (PURE_FUNC_NAMES.has(name) && !path.node.leadingComments) {
