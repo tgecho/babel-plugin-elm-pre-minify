@@ -33,7 +33,7 @@ Run your minifier on the output file as before. I've only tested it with UglifyJ
 For example:
 
 ```sh
-uglifyjs path/to/babel/compiled.js --compress 'pure_getters=true' --mangle --output path/to/final.js
+uglifyjs path/to/babel/compiled.js --compress --mangle --output path/to/final.js
 ```
 
 
