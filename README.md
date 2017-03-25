@@ -129,3 +129,16 @@ vanilla-closure.js    70078   22127  21328
 optimized-closure.js  58525   18026  17379
 optimized-uglify.js   39639   12314  11886
 ```
+
+### elm-street-404
+
+```
+file                  raw     gzip   zopfli
+original.js           496671  88246  82596
+vanilla-babili.js     171908  47390  45513
+vanilla-uglify.js     155826  43115  41539
+vanilla-closure.js    133832  40311  38818
+optimized-babili.js   162975  44049  42230
+optimized-closure.js  122767  36445  35111
+optimized-uglify.js   116055  32072  30843
+```
