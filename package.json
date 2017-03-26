@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-elm-pre-minify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Babel plugin that prepares Elm compiled Javascript for optimal minification",
   "main": "elm-pre-minify.js",
   "repository": "https://github.com/tgecho/babel-plugin-elm-pre-minify",

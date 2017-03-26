@@ -1,4 +1,4 @@
-0.1.1 - Unreleased
+0.1.1 - 2017-03-25
 
 - Fix reference replacement bug surfaced by elm-webgl
 - Add webgl and svg related functions to pure whitelist
