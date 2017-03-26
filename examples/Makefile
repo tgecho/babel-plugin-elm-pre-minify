@@ -29,6 +29,10 @@ build/elm-street-404/original.js:
 	mkdir -p ./build/elm-street-404
 	cd elm-street-404; elm-make src/Main.elm --yes --output ../$(BASE)/original.js
 
+build/game2048elm/original.js:
+	mkdir -p ./build/game2048elm
+	cd game2048elm; elm-make src/Game2048.elm --yes --output ../$(BASE)/original.js
+
 $(BASE)/prepared.js: $(BASE)/original.js
 	BABEL_ENV=prepared babel $(BASE)/original.js -o $(BASE)/prepared.js
 
