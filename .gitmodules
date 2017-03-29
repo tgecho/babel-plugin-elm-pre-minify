@@ -7,3 +7,6 @@
 [submodule "examples/game2048elm"]
 	path = examples/game2048elm
 	url = https://github.com/zindel/game2048elm.git
+[submodule "examples/kite"]
+	path = examples/kite
+	url = https://github.com/erkal/kite.git

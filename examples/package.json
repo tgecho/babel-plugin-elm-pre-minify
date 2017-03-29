@@ -8,6 +8,6 @@
     "babel-cli": "^6.24.0",
     "babel-preset-babili": "^0.0.12",
     "elm": "^0.18.0",
-    "uglify": "^0.1.5"
+    "uglify-js": "^2.8.18"
   }
 }

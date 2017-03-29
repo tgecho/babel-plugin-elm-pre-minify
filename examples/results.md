@@ -68,3 +68,16 @@ vanilla-closure.js    90027   27849  26762
 optimized-babili.js   106105  28934  27754
 optimized-closure.js  78954   23631  22747
 optimized-uglify.js   68148   19567  18824
+
+
+## kite
+```
+file                  raw     gzip    zopfli
+original.js           835706  144236  134372
+vanilla-babili.js     351616  93988   89108
+vanilla-uglify.js     332420  88124   83412
+vanilla-closure.js    296657  85551   80489
+optimized-babili.js   342618  91665   86556
+optimized-closure.js  285541  81814   77129
+optimized-uglify.js   260424  74515   69439
+```

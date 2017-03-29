@@ -1,6 +1,7 @@
 # In addition to running `yarn install` first, you'll need zopfli and closure-compiler on your system to complete
 # To get stats, run with the name of the example you want to see: `make stats NAME=hello-world`
 
+SHELL := /bin/bash
 export PATH := node_modules/.bin:$(PATH)
 
 NAME ?= hello-world
@@ -32,6 +33,10 @@ build/elm-street-404/original.js:
 build/game2048elm/original.js:
 	mkdir -p ./build/game2048elm
 	cd game2048elm; elm-make src/Game2048.elm --yes --output ../$(BASE)/original.js
+
+build/kite/original.js:
+	mkdir -p ./build/kite
+	cd kite; elm-make Main.elm --yes --output ../$(BASE)/original.js
 
 $(BASE)/prepared.js: $(BASE)/original.js
 	BABEL_ENV=prepared babel $(BASE)/original.js -o $(BASE)/prepared.js

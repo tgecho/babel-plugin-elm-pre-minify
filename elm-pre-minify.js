@@ -99,7 +99,7 @@ module.exports = function({types: t}) {
                 const name = path.node.callee.name;
 
                 if (PURE_FUNC_NAMES.has(name) && !path.node.leadingComments) {
-                    path.node.leadingComments = [{type: 'BlockStatement', value: '#__PURE__'}];
+                    path.node.leadingComments = [{type: 'CommentBlock', value: '#__PURE__'}];
                 }
             },
             UnaryExpression(path, state) {

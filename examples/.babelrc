@@ -1,4 +1,5 @@
 {
+	"compact": false,
 	"env": {
 		"prepared": {
 			"plugins": ["../elm-pre-minify.js"]
