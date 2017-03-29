@@ -21,14 +21,12 @@ You'll need Babel: [Babel Setup Docs](https://babeljs.io/docs/setup/)
 Add the plugin to your Babel config (e.g. .babelrc)
 
 ```json
-{
-	"plugins": ["elm-pre-minify"]
-}
+{"plugins": ["elm-pre-minify"]}
 ```
 
 ### Minifying
 
-Run your minifier on the output file as before. I've only tested it with UglifyJS and Closure, and Uglify gives the best results by far. Explicitly setting the pure_getters option will hopefully be unnecessary in the future as it may not be safe on JS code outside of the Elm scope.
+Run your minifier on the output file as before. I've only tested it with UglifyJS and Closure, and Uglify gives the best results by far. Note that this requires UglifyJS2 v2.8.18 or greater.
 
 For example:
 
