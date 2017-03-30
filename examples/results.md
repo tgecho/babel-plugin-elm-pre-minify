@@ -1,7 +1,7 @@
 These stats are generated from the examples directory, and can be reproduced by following the instructions in the Makefile. The optimized.
 
 
-## hello-world
+## [hello-world](hello-world)
 
 ```
 file                  raw     gzip   zopfli
@@ -15,7 +15,7 @@ optimized-uglify.js   22265   7876   7660
 ```
 
 
-## elm-todomvc
+## [elm-todomvc](https://github.com/evancz/elm-todomvc)
 
 ```
 file                  raw     gzip   zopfli
@@ -29,23 +29,7 @@ optimized-uglify.js   39882   12773  12319
 ```
 
 
-## kitchen-sink
-
-Imports all "official" modules and demonstrates that dead code elimination is able to clear most of them away. The main barrier in getting down to the hello-world size is the fact that effect managers (Task, Time and Random) register themselves on a shared object, preventing dead code elimination from working on them and their dependencies. In reality you're probably not importing them without using the effect managers, so the ~4.5KB is really nothing to cry about.
-
-```
-file                  raw     gzip   zopfli
-original.js           219217  45751  43100
-vanilla-babili.js     89686   26486  25558
-vanilla-uglify.js     78251   23329  22440
-optimized-babili.js   80000   22966  22037
-vanilla-closure.js    70078   22127  21328
-optimized-closure.js  58525   18026  17379
-optimized-uglify.js   41286   12938  12478
-```
-
-
-## elm-street-404
+## [elm-street-404](https://github.com/zalando/elm-street-404)
 
 ```
 file                  raw     gzip   zopfli
@@ -59,7 +43,9 @@ optimized-uglify.js   117373  32435  31183
 ```
 
 
-## game2048elm
+## [game2048elm](https://github.com/zindel/game2048elm)
+
+```
 file                  raw     gzip   zopfli
 original.js           309511  58192  54515
 vanilla-babili.js     115261  32420  31205
@@ -68,9 +54,10 @@ optimized-babili.js   106105  28934  27754
 vanilla-closure.js    90027   27849  26762
 optimized-closure.js  78954   23631  22747
 optimized-uglify.js   69724   20093  19329
+```
 
 
-## kite
+## [kite](https://github.com/erkal/kite)
 ```
 file                  raw     gzip    zopfli
 original.js           835706  144236  134372
