@@ -1,3 +1,8 @@
+0.1.2 - 2017-03-29
+
+- Remove a few items from the pure function whitelist
+
+
 0.1.1 - 2017-03-25
 
 - Fix reference replacement bug surfaced by elm-webgl
