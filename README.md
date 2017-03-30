@@ -64,7 +64,7 @@ var referenceToWrappedFunction = shouldBeUnwrapped$iife_public$exposedFunction;
 
 ### Pure function annotation
 
-Minifiers tend to be very conservative about whether or not a function has potential side effects. If a variable is unused, but a function was called as part of its initialization, the dead code eliminator will tend to skip that variable. In Elm, helper functions such as `F2` and `A2` are used extensively for various reasons. They are in fact pure and side effect free (despite their internal use of mutation).
+Minifiers tend to be very conservative about whether or not a function has potential side effects. If a variable is unused, but a function was called as part of its initialization, the dead code eliminator will tend to skip that variable. In Elm, helper functions such as `F2` are used extensively for various reasons. They are in fact pure and side effect free (despite their internal use of mutation).
 
 Some minifiers (at least [UglifyJS](https://github.com/mishoo/UglifyJS2/pull/1448)) are beginning to support a special comment based annotation, so we add this comment to any function call expressions matching a whitelist of names. This allows much more aggressive dead code elimination to take place.
 
